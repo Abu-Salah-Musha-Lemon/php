@@ -1,5 +1,6 @@
 <?php 
 include_once("header.php");
+include_once("connection.php");
 
 ?>
 <div class="container ">
