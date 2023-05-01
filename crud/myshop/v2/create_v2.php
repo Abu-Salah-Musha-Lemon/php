@@ -37,19 +37,19 @@ if (isset($_POST['submit'])) {
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Name</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="name" placeholder="Ente Your name" >
+                        <input type="text" class="form-control" name="name" placeholder="Ente Your name" required >
                     </div>
                 </div><br>
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Email</label>
                         <div class="col-sm-6">
-                            <input type="Email" class="form-control" name="email" placeholder="Ente Your Email">
+                            <input type="Email" class="form-control" name="email" placeholder="Ente Your Email" required>
                         </div>
                 </div><br>
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Phone Number</label>
                         <div class="col-sm-6">
-                            <input type="number" class="form-control" name="phone" placeholder="Ente Your Phone Number">
+                            <input type="phone" class="form-control" name="phone" placeholder="Ente Your Phone Number" required>
                         </div>
                 </div><br>
                 <div class="row md-3">
