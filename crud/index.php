@@ -2,7 +2,9 @@
 include_once("header.php");
 include_once("connection.php");
 
-
+// $sql ="SELECT * FROM student JOIN studentclass WHERE student.sclass = studentclass.cid"; 
+$sql ="SELECT * FROM student"; 
+$result = mysqli_query($conn,$sql) or die("query unsuccessfull");
 
 ?>
 <div class="container shadow-none p-3 mb-5 bg-body-tertiary rounded">
@@ -42,7 +44,7 @@ include_once("connection.php");
 
           <td>
             <button type="button" class="btn btn-warning">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-danger">Delete <a href="/crud/delete.php"></a> </button>
           </td>
       </tr>
       '
@@ -51,6 +53,7 @@ include_once("connection.php");
      
      
      }?>
+    
         </tbody>
       </table>
 <!-- 

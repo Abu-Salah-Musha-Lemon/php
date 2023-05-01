@@ -1,6 +1,6 @@
 
 <?php 
-header("Refresh:5");
+//header("Refresh:5");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +16,9 @@ header("Refresh:5");
 <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="insert.php" class="nav-link">Insert</a></li>
         <li class="nav-item"><a href="update.php" class="nav-link">Update</a></li>
         <li class="nav-item"><a href="delete.php" class="nav-link">delete</a></li>
-        <li class="nav-item"><a href="insert.php" class="nav-link">Insert</a></li>
       </ul>
     </header>
 

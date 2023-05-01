@@ -1,41 +1,45 @@
 <?php 
 include_once("header.php");
 include_once("connection.php");
+ 
+$sql ="SELECT * FROM studentclass"; 
+$result = mysqli_query($conn,$sql) or die("query unsuccessfull");
 
 ?>
 <div class="container ">
-<form class="shadow-sm p-3 mb-5 bg-white rounded">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Student Name</label>
-    <input type="text" class="form-control" id="sname" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Address</label>
-    <input type="text" class="form-control" id="saddress" aria-describedby="emailHelp">
-  </div>
-  
-  <div class="input-group mb-3">
-      <div class="input-group-append">
-        <label class="input-group-text" for="inputGroupSelect02">Class</label>
-      </div>
-      <select class="custom-select" id="inputGroupSelect02">
-        <option selected>Choose...</option>
-        <option value="1">CSE</option>
-        <option value="2">BBA</option>
-        <option value="3">EEE</option>
-      </select>
+<form class="shadow-sm p-3 mb-5 bg-white rounded" action="savedata.php" method="$_POST">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Student Name</label>
+      <input type="text" class="form-control" id="sname"name="sname" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Address</label>
+      <input type="text" class="form-control" name="saddress" aria-describedby="emailHelp">
+    </div>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-append">
+          <label class="input-group-text" for="inputGroupSelect02">Class</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect02">
+          <option selected>Choose...</option>
+          <?php while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+          <option value="<?php echo $row["cid"];?>"><?php echo $row["cname"];?></option>
+          <?php  };?>
+        </select>
 
-  </div>
+    </div>
 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Subject</label>
-    <input type="text" class="form-control" id="ssubject" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Phone</label>
-    <input type="number" class="form-control" id="sphone" aria-describedby="emailHelp">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Subject</label>
+      <input type="text" class="form-control" name="ssubject" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Phone</label>
+      <input type="number" class="form-control" name="sphone" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary" name="ssubmit">Submit</button>
 </form>
 </div>
 
