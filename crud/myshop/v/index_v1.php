@@ -14,7 +14,7 @@ include_once "connection.php";
 <body>
     <div class="container my-5">
         <h2>List of Clients</h2>
-        <a class="btn btn-primary" href="./create.php" role="button">New Clients</a>
+        <a class="btn btn-primary" href="./create_v1.php" role="button">New Clients</a>
 
     <table class="table table-striped">
   <thead>
