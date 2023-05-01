@@ -1,12 +1,20 @@
 <?php
 include_once "connection.php";
+$id = $_GET["editid"];
+$sql = "SELECT * FROM `clients` WHERE id = $id";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+$name =$row["name"];
+$email =$row["email"];
+$phone =$row["phone"];
+$address =$row["address"];
 
 if (isset($_POST['submit'])) {
     $name =$_POST["name"];
     $email =$_POST["email"];
     $phone =$_POST["phone"];
     $address =$_POST["address"];
-        $sql = "INSERT INTO clients (name, email, phone, address) VALUES('$name','$email','$phone','$address')";
+        $sql = "UPDATE `clients` SET `id`='$id',`name`='$name',`email`='$email',`phone`='$phone',`address`='$address' WHERE id = $id ";
         $result = mysqli_query($conn,$sql);
         if ($result) {
             // echo"data inserted successfully";
@@ -37,30 +45,30 @@ if (isset($_POST['submit'])) {
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Name</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="name" placeholder="Ente Your name" >
+                        <input type="text" class="form-control" name="name" value="<?php echo $name;?>" >
                     </div>
                 </div><br>
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Email</label>
                         <div class="col-sm-6">
-                            <input type="Email" class="form-control" name="email" placeholder="Ente Your Email">
+                            <input type="Email" class="form-control" name="email" value="<?php echo $email;?>">
                         </div>
                 </div><br>
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Phone Number</label>
                         <div class="col-sm-6">
-                            <input type="number" class="form-control" name="phone" placeholder="Ente Your Phone Number">
+                            <input type="" class="form-control" name="phone" value="<?php echo $phone;?>">
                         </div>
                 </div><br>
                 <div class="row md-3">
                         <label class="col-sm-3 col-form-lable">Address</label>
                         <div class="col-sm-6">
-                         <input type="text" class="form-control" name="address" placeholder="Ente Your address">
+                         <input type="text" class="form-control" name="address" value="<?php echo $address;?>">
                         </div>
                 </div><br>
                 <div class="row md-3">
                         <div class="offset-sm-3 col-sm-3 d-grid">
-                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="submit">Update</button>
                             <!-- <a type="submit" class="btn btn-primary" href=""name="submit" role="button">Submit</a> -->
                         </div>
                         <div class="col-sm-3 d-grid">
