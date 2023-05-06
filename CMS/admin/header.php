@@ -25,9 +25,9 @@
     <div id="templatemo_menu">
     
         <ul>
-            <li><a href="../admin/add-user.php" class="current" >User</a></li>
-            <li><a href="../admin/add-post.php" >Post</a></li>
-            <li><a href="../admin/add-category.php">Categori</a></li>
+            <li><a href="../admin/user.php" class="current" >User</a></li>
+            <li><a href="../admin/post.php" >Post</a></li>
+            <li><a href="../admin/category.php">Categori</a></li>
         </ul>    	
     
     </div> <!-- end of templatemo_menu -->
