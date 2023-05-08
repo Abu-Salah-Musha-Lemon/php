@@ -1,6 +1,16 @@
 <?php
 include_once("header.php");
 include_once("config.php");
+$id = $_GET['editId'];
+$sql = "SELECT * FROM `usertable` WHERE `userId` = $id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$firstName = $row["firstName"];
+$lastName = $row["lastName"];
+$email = $row["email"];
+$userName = $row["userName"];
+$pass = md5($row["pass"]);
+$role =  $row["role"];
 if (isset($_POST["save"])) {
   include "config.php";
   // $firstName=mysqli_real_escape_string($conn, $_POST["firstName"]);
@@ -18,57 +28,46 @@ if (isset($_POST["save"])) {
   $role =  $_POST["role"];
 
 
-   $sql = "SELECT userName  FROM `usertable` WHERE `userName`='{$userName}'";
+   $sql = "UPDATE `usertable` SET `firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`password`='$pass',`role`='$role',`email`='$email' WHERE $id = 'id'";
   $result = mysqli_query($conn, $sql) or die("query not exist");
-
-  if (mysqli_num_rows($result)) {
-    echo " <p> User name already exists </p>";
-  } else {
-    $sql1 = "INSERT INTO `usertable`( `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES ('$firstName','$lastName','$userName','$pass','$role','$email')";
-    if (mysqli_query($conn, $sql1)) {
-      header("Localhost:http://localhost/learnPhp/CMS/admin/add-user.php");
-    }
-  }
 }
 ?>
 
 <div class="container my-5">
   <form class="shadow-sm p-3 mb-5 bg-white rounded"  method="POST">
-    <h2>Add User</h2>
+    <h2>Updat Data</h2>
     <div class="form-group">
       <label for="">First Name</label>
-      <input type="text" class="form-control" name="firstName" placeholder="First Name">
+      <input type="text" class="form-control" name="firstName" placeholder="First Name" value="<?php echo $firstName;?>">
     </div>
 
 
     <div class="form-group">
       <label for="">Last Name</label>
-      <input type="text" class="form-control" name="lasttName" placeholder="last Name">
+      <input type="text" class="form-control" name="lasttName" placeholder="last Name" value="<?php echo $lastName;?>">
     </div>
 
 
     <div class="form-group">
       <label for="">User Name</label>
-      <input type="text" class="form-control" name="userName" placeholder="User Name">
+      <input type="text" class="form-control" name="userName" placeholder="User Name" value="<?php echo $userName;?>">
     </div>
 
     <div class="form-group">
       <label for="">Email</label>
-      <input type="email" class="form-control" name="email" placeholder="Email">
+      <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $email;?>">
     </div>
 
 
     <div class="form-group">
       <label for="">Password</label>
-      <input type="password" class="form-control" name="pass" required>
+      <input type="password" class="form-control" name="pass" value="<?php echo $email;?>" required>
     </div><br>
     <div class="form-group form-inlinere">
       <label class="my-1 mr-2">User Role</label>
       <select class="custom-select my-1 mr-sm-2">
         <option selected>Choose...</option>
-        <option value="0">Admin</option>
-        <option value="1">Member</option>
-        <option value="2">Three</option>
+        <option value="<?php echo $role;?>">Admin</option>
       </select>
     </div><br>
     <input type="submit" value="Save" name="save" class="btn btn-primary">
