@@ -10,15 +10,17 @@ $firstName = $row["firstName"];
 $lastName = $row["lastName"];
 $email = $row["email"];
 $userName = $row["userName"];
-//$pass = md5($row["pass"]);
 $role =  $row["role"];
+//$pass = md5($row["pass"]);
+
+
 if (isset($_POST["save"])) {
 
-  $firstName=mysqli_real_escape_string($conn, $_POST["firstName"]);
-  $lastName=mysqli_real_escape_string($conn,$_POST["lastName"]);
-  $email=mysqli_real_escape_string($conn,$_POST["email"]);
-  $userName=mysqli_real_escape_string($conn,$_POST["userName"]);
-  $role=mysqli_real_escape_string($conn,$_POST["role"]);
+  $firstName = mysqli_real_escape_string($conn, $_POST["firstName"]);
+  $lastName = mysqli_real_escape_string($conn, $_POST["lastName"]);
+  $userName = mysqli_real_escape_string($conn, $_POST["userName"]);
+  $email = mysqli_real_escape_string($conn, $_POST["email"]);
+  $role = mysqli_real_escape_string($conn, $_POST["role"]);
   //$pass=mysqli_real_escape_string($conn,md5($_POST["pass"]) );
 
   // $firstName = $_POST["firstName"];
@@ -28,8 +30,8 @@ if (isset($_POST["save"])) {
   // $role =  $_POST["role"];
   //$pass = md5($_POST["pass"]);
 
-
-  $sql = "UPDATE `usertable` SET `firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`email`='$email',`role`='$role' WHERE $id = 'id'";
+  //UPDATE `usertable` SET `firstName`='lemon',`lastName`='ahmed',`userName`='x-man',`password`='1234',`role`='0',`email`='l@gmail.com' WHERE `userId`= 16;
+  $sql = "UPDATE `usertable` SET `firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`role`='$role',`email`='$email' WHERE 'userId' = '$id'";
   $result = mysqli_query($conn, $sql) or die("query not exist");
   header("localhost:{$hostName}/admin/user.php");
 }
