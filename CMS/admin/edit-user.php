@@ -13,19 +13,19 @@ $pass = md5($row["pass"]);
 $role =  $row["role"];
 if (isset($_POST["save"])) {
   include "config.php";
-  // $firstName=mysqli_real_escape_string($conn, $_POST["firstName"]);
-  // $lastName=mysqli_real_escape_string($conn,$_POST["lastName"]);
-  // $email=mysqli_real_escape_string($conn,$_POST["email"]);
-  // $userName=mysqli_real_escape_string($conn,$_POST["userName"]);
-  // $pass=mysqli_real_escape_string($conn,md5($_POST["pass"]) );
-  // $role=mysqli_real_escape_string($conn,$_POST["role"]);
+  $firstName=mysqli_real_escape_string($conn, $_POST["firstName"]);
+  $lastName=mysqli_real_escape_string($conn,$_POST["lastName"]);
+  $email=mysqli_real_escape_string($conn,$_POST["email"]);
+  $userName=mysqli_real_escape_string($conn,$_POST["userName"]);
+  $pass=mysqli_real_escape_string($conn,md5($_POST["pass"]) );
+  $role=mysqli_real_escape_string($conn,$_POST["role"]);
 
-  $firstName = $_POST["firstName"];
-  $lastName = $_POST["lastName"];
-  $email = $_POST["email"];
-  $userName = $_POST["userName"];
-  $pass = md5($_POST["pass"]);
-  $role =  $_POST["role"];
+  // $firstName = $_POST["firstName"];
+  // $lastName = $_POST["lastName"];
+  // $email = $_POST["email"];
+  // $userName = $_POST["userName"];
+  // $pass = md5($_POST["pass"]);
+  // $role =  $_POST["role"];
 
 
    $sql = "UPDATE `usertable` SET `firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`password`='$pass',`role`='$role',`email`='$email' WHERE $id = 'id'";
@@ -70,7 +70,7 @@ if (isset($_POST["save"])) {
         <option value="<?php echo $role;?>">Admin</option>
       </select>
     </div><br>
-    <input type="submit" value="Save" name="save" class="btn btn-primary">
+    <input type="submit" value="Update" name="save" class="btn btn-primary">
 
   </form>
 </div>

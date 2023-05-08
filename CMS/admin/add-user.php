@@ -3,19 +3,19 @@ include_once("header.php");
 include_once("config.php");
 if (isset($_POST["save"])) {
   include "config.php";
-  // $firstName=mysqli_real_escape_string($conn, $_POST["firstName"]);
-  // $lastName=mysqli_real_escape_string($conn,$_POST["lastName"]);
-  // $email=mysqli_real_escape_string($conn,$_POST["email"]);
-  // $userName=mysqli_real_escape_string($conn,$_POST["userName"]);
-  // $pass=mysqli_real_escape_string($conn,md5($_POST["pass"]) );
-  // $role=mysqli_real_escape_string($conn,$_POST["role"]);
+  $firstName=mysqli_real_escape_string($conn, $_POST["firstName"]);
+  $lastName=mysqli_real_escape_string($conn,$_POST["lastName"]);
+  $email=mysqli_real_escape_string($conn,$_POST["email"]);
+  $userName=mysqli_real_escape_string($conn,$_POST["userName"]);
+  $pass=mysqli_real_escape_string($conn,md5($_POST["pass"]) );
+  $role=mysqli_real_escape_string($conn,$_POST["role"]);
 
-  $firstName = $_POST["firstName"];
-  $lastName = $_POST["lastName"];
-  $email = $_POST["email"];
-  $userName = $_POST["userName"];
-  $pass = md5($_POST["pass"]);
-  $role =  $_POST["role"];
+  // $firstName = $_POST["firstName"];
+  // $lastName = $_POST["lastName"];
+  // $email = $_POST["email"];
+  // $userName = $_POST["userName"];
+  // $pass = md5($_POST["pass"]);
+  // $role =  $_POST["role"];
 
 
    $sql = "SELECT userName  FROM `usertable` WHERE `userName`='{$userName}'";
@@ -43,7 +43,7 @@ if (isset($_POST["save"])) {
 
     <div class="form-group">
       <label for="">Last Name</label>
-      <input type="text" class="form-control" name="lasttName" placeholder="last Name">
+      <input type="text" class="form-control" name="lastName" placeholder="last Name">
     </div>
 
 
@@ -66,9 +66,8 @@ if (isset($_POST["save"])) {
       <label class="my-1 mr-2">User Role</label>
       <select class="custom-select my-1 mr-sm-2">
         <option selected>Choose...</option>
-        <option value="0">Admin</option>
-        <option value="1">Member</option>
-        <option value="2">Three</option>
+        <option value="0" name = "admin">Admin</option>
+        <option value="1" name = "member">Member</option>
       </select>
     </div><br>
     <input type="submit" value="Save" name="save" class="btn btn-primary">
