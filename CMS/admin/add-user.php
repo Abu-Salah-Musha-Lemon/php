@@ -21,19 +21,19 @@ if (isset($_POST["save"])) {
    $sql = "SELECT userName  FROM `usertable` WHERE `userName`='{$userName}'";
   $result = mysqli_query($conn, $sql) or die("query not exist");
 
-  if (mysqli_num_rows($result)) {
+  if (mysqli_num_rows($result)>0) {
     echo " <p> User name already exists </p>";
   } else {
     $sql1 = "INSERT INTO `usertable`( `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES ('$firstName','$lastName','$userName','$pass','$role','$email')";
     if (mysqli_query($conn, $sql1)) {
-      header($host);
+      header("localhost:http://localhost/learnPhp/CMS/admin/user.php");
     }
   }
 }
 ?>
 
 <div class="container my-5">
-  <form class="shadow-sm p-3 mb-5 bg-white rounded" action="<?php $_SERVER["PHP_SELF"]?>"  method="POST">
+  <form class="shadow-sm p-3 mb-5 bg-white rounded" action="<?php //$_SERVER["PHP_SELF"]?>"  method="POST">
     <h2>Add User</h2>
     <div class="form-group">
       <label for="">First Name</label>

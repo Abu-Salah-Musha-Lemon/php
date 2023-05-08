@@ -3,7 +3,7 @@
   $user_id = "root";
   $password = "";
   $database = "CMS";
-  $hostName = "Localhost:http://localhost/learnPhp/CMS/admin/user.php";
+  $hostName = "http://localhost/learnPhp/CMS/";
   $conn = mysqli_connect($host,$user_id,$password,$database);
   // if ($conn) {
   //  echo "conneecte succesfully";
