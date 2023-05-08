@@ -9,7 +9,7 @@ $firstName = $row["firstName"];
 $lastName = $row["lastName"];
 $email = $row["email"];
 $userName = $row["userName"];
-$pass = md5($row["pass"]);
+//$pass = md5($row["pass"]);
 $role =  $row["role"];
 if (isset($_POST["save"])) {
   include "config.php";
@@ -58,16 +58,24 @@ if (isset($_POST["save"])) {
       <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo $email;?>">
     </div>
 
-
+<!-- 
     <div class="form-group">
       <label for="">Password</label>
       <input type="password" class="form-control" name="pass" value="<?php echo $email;?>" required>
-    </div><br>
+    </div><br> -->
     <div class="form-group form-inlinere">
       <label class="my-1 mr-2">User Role</label>
       <select class="custom-select my-1 mr-sm-2">
-        <option selected>Choose...</option>
-        <option value="<?php echo $role;?>">Admin</option>
+      <?php
+        if ($row['role']==1) {
+          echo' 
+          <option value="0" selected >Admin</option>
+          <option value="1" >Member</option>';
+        } else {
+          echo' 
+          <option value="0" >Admin</option>
+          <option value="1" selected >Member</option>';
+        }?>
       </select>
     </div><br>
     <input type="submit" value="Update" name="save" class="btn btn-primary">

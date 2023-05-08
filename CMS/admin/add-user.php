@@ -26,14 +26,14 @@ if (isset($_POST["save"])) {
   } else {
     $sql1 = "INSERT INTO `usertable`( `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES ('$firstName','$lastName','$userName','$pass','$role','$email')";
     if (mysqli_query($conn, $sql1)) {
-      header("Localhost:http://localhost/learnPhp/CMS/admin/add-user.php");
+      header($host);
     }
   }
 }
 ?>
 
 <div class="container my-5">
-  <form class="shadow-sm p-3 mb-5 bg-white rounded"  method="POST">
+  <form class="shadow-sm p-3 mb-5 bg-white rounded" action="<?php $_SERVER["PHP_SELF"]?>"  method="POST">
     <h2>Add User</h2>
     <div class="form-group">
       <label for="">First Name</label>
@@ -64,10 +64,10 @@ if (isset($_POST["save"])) {
     </div><br>
     <div class="form-group form-inlinere">
       <label class="my-1 mr-2">User Role</label>
-      <select class="custom-select my-1 mr-sm-2">
+      <select class="custom-select my-1 mr-sm-2" name="role">
         <option selected>Choose...</option>
-        <option value="0" name = "admin">Admin</option>
-        <option value="1" name = "member">Member</option>
+        <option value="0" >Admin</option>
+        <option value="1" >Member</option>
       </select>
     </div><br>
     <input type="submit" value="Save" name="save" class="btn btn-primary">
