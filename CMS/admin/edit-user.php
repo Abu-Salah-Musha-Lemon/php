@@ -11,7 +11,7 @@ $lastName = $row["lastName"];
 $email = $row["email"];
 $userName = $row["userName"];
 $role =  $row["role"];
-//$pass = md5($row["pass"]);
+
 
 
 if (isset($_POST["save"])) {
@@ -21,14 +21,6 @@ if (isset($_POST["save"])) {
   $userName = mysqli_real_escape_string($conn, $_POST["userName"]);
   $email = mysqli_real_escape_string($conn, $_POST["email"]);
   $role = mysqli_real_escape_string($conn, $_POST["role"]);
-  //$pass=mysqli_real_escape_string($conn,md5($_POST["pass"]) );
-
-  // $firstName = $_POST["firstName"];
-  // $lastName = $_POST["lastName"];
-  // $email = $_POST["email"];
-  // $userName = $_POST["userName"];
-  // $role =  $_POST["role"];
-  //$pass = md5($_POST["pass"]);
 
   //UPDATE `usertable` SET `firstName`='lemon',`lastName`='ahmed',`userName`='x-man',`password`='1234',`role`='0',`email`='l@gmail.com' WHERE `userId`= 16;
   $sql = "UPDATE `usertable` SET `firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`role`='$role',`email`='$email' WHERE 'userId' = '$id'";

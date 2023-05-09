@@ -9,9 +9,10 @@ if (isset($_GET['deleteId'])) {
   $id = $_GET['deleteId'];
   $delete = "DELETE FROM `usertable` WHERE `userId` = $id";
   $result = mysqli_query($conn, $delete);
-} else {
-  echo "item is not delete";
-}
+  print_r($result);}
+// } else {
+//   echo "item is not delete";
+// }
 
 ?>
 
