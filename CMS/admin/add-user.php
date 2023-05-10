@@ -10,12 +10,6 @@ if (isset($_POST["save"])) {
   $pass = mysqli_real_escape_string($conn, md5($_POST["pass"]));
   $role = mysqli_real_escape_string($conn, $_POST["role"]);
 
-  // $firstName = $_POST["firstName"];
-  // $lastName = $_POST["lastName"];
-  // $email = $_POST["email"];
-  // $userName = $_POST["userName"];
-  // $pass = md5($_POST["pass"]);
-  // $role =  $_POST["role"];
 
 
   $sql = "SELECT userName  FROM `usertable` WHERE `userName`='{$userName}'";
@@ -26,7 +20,7 @@ if (isset($_POST["save"])) {
   } else {
     $sql1 = "INSERT INTO `usertable`( `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES ('$firstName','$lastName','$userName','$pass','$role','$email')";
     if (mysqli_query($conn, $sql1)) {
-      header("localhost:http://localhost/learnPhp/CMS/admin/user.php");
+      header("localhost:{$hostName}/admin/user.php");//it's not work 
     }
   }
 }

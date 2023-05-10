@@ -2,23 +2,13 @@
 include_once("header.php");
 include_once "config.php";
 
-$sql = "SELECT * FROM usertable";
-$result = mysqli_query($conn, $sql) or die("query unsuccessfull");
-
-if (isset($_GET['deleteId'])) {
-  $id = $_GET['deleteId'];
-  $delete = "DELETE FROM `usertable` WHERE `userId` = $id";
-  $result = mysqli_query($conn, $delete);
-  print_r($result);}
-// } else {
-//   echo "item is not delete";
-// }
-
 ?>
 
 
 <div class="container">
   <?php
+  $sql = "SELECT * FROM `usertable` ORDER BY`userId`DESC;";
+  $result = mysqli_query($conn, $sql) or die("query unsuccessfull");
   if (mysqli_num_rows($result) > 0) {
   ?>
     <table class="table table-striped">
@@ -38,27 +28,30 @@ if (isset($_GET['deleteId'])) {
       <tbody>
         <?php if ($result) {
           while ($row = mysqli_fetch_assoc($result)) {
-
-            echo '
-      <tr>
-          <td>' . $row["userId"] . '</td>
-          <td>' . $row["firstName"] . " " . $row["lastName"] . '</td>
-          <td>' . $row["userName"] . '</td>
-          <td>' . $row["email"] . '</td>
-          <td>' . //if ($row['role']==1) {
-              //   echo "admin";
-              //}else{
-              //  echo "member";
-              //  }
-              $row["role"] .
-              '</td>
-          <td> <a class="btn btn-primary text-light" href="./edit-user.php? editId = ' . $row['userId'] . '" role="button">Edit</a></td>
-          <td>
-          <a class="btn btn-danger text-light" href="./user.php? deleteId  =' . $row['userId'] . '" role="button">Delete</a>
-          <!--<button  class="btn btn-danger text-light" href="./user.php? deleteId  =' . $row['userId'] . '" role="button">Delete</button>-->
-          </td>
-      </tr>
-      ';
+        ?>
+            <tr>
+              <td><?php echo $row["userId"]; ?></td>
+              <td><?php echo $row["firstName"] . " " . $row["lastName"]; ?></td>
+              <td><?php echo $row["userName"]; ?></td>
+              <td><?php echo $row["email"]; ?></td>
+              <td>
+                <?php
+                if ($row['role'] == 0) {
+                  echo ' 
+                   <option value="0" selected >Admin</option>';
+                } else {
+                  echo ' 
+                 <option value="1" selected >Member</option>';
+                } ?>
+              </td>
+              <td> <a class="btn btn-primary text-light" href="edit-user.php?edit = <?php echo $row["userId"]; ?>" role="button">Edit</a></td>
+              <td> <input type="submit" value="" href="edit-user.php?edit = <?php echo $row["userId"]; ?>"><i class="bi bi-clipboard-plus-fill"></i></td>
+              <td>
+                <a class="btn btn-danger text-light" href="user.php? deleteId  =<?php echo $row["userId"]; ?>" role="button">Delete</a>
+                <!--<button  class="btn btn-danger text-light" href="./user.php? deleteId =<?php $row['userId']; ?>" role="button">Delete</button>-->
+              </td>
+            </tr>
+        <?php
           };
         } ?>
 
