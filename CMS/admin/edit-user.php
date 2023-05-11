@@ -1,17 +1,41 @@
 <?php
 include_once("config.php");
 include_once("header.php");
-
+$id = base64_decode($_GET["edit"]);
+if (isset($_POST['update'])) {
+  // $firstName = $_POST["firstName"];
+  // $lastName = $_POST["lastName"];
+  // $userName = $_POST["userName"];
+  // $email = $_POST["email"];
+  // $role = $_POST["role"];
+  $firstName = mysqli_real_escape_string($conn, $_POST["firstName"]);
+  $lastName = mysqli_real_escape_string($conn, $_POST["lastName"]);
+  $email = mysqli_real_escape_string($conn, $_POST["email"]);
+  $userName = mysqli_real_escape_string($conn, $_POST["userName"]);
+  //$pass = mysqli_real_escape_string($conn, md5($_POST["pass"]));
+  $role = mysqli_real_escape_string($conn, $_POST["role"]);
+  $sqli1 = "UPDATE `usertable` SET `userId`='$id',`firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`role`='$role',`email`='$email' WHERE `userId`='$id'";
+  $result = mysqli_query($conn, $sqli1);
+  if ($result) {
+    header("location:user.php");
+  }
+}
 ?>
 
 <div class="container my-5">
   <?php
-  $id = $_GET["edit"];
+
   $sql = "SELECT * FROM usertable WHERE userId = $id";
   $result = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
+      $firstName = $row["firstName"];
+      $lastName = $row["lastName"];
+      $userName = $row["userName"];
+      $email = $row["email"];
+      $role = $row["role"];
+
   ?>
       <form class="shadow-sm p-3 mb-5 bg-white rounded" method="POST">
         <h2>Updat Data</h2>

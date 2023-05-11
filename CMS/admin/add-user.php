@@ -19,15 +19,18 @@ if (isset($_POST["save"])) {
     echo " <h2> User name already exists </h2>";
   } else {
     $sql1 = "INSERT INTO `usertable`( `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES ('$firstName','$lastName','$userName','$pass','$role','$email')";
-    if (mysqli_query($conn, $sql1)) {
-      header("localhost:{$hostName}/admin/user.php");//it's not work 
+    $result = mysqli_query($conn, $sql1);
+    header("localhost:user.php");
+    if ($result) {
+      header("localhost:user.php"); //it's not work 
     }
   }
 }
 ?>
 
 <div class="container my-5">
-  <form class="shadow-sm p-3 mb-5 bg-white rounded" action="<?php //$_SERVER["PHP_SELF"] ?>" method="POST">
+  <form class="shadow-sm p-3 mb-5 bg-white rounded" action="<?php //$_SERVER["PHP_SELF"] 
+                                                            ?>" method="POST">
     <h2>Add User</h2>
     <div class="form-group">
       <label for="">First Name</label>

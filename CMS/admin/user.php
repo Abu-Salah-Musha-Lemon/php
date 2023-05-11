@@ -1,13 +1,17 @@
 <?php
 include_once("header.php");
 include_once "config.php";
-
+// base64 is incerpted system.
+if (isset($_GET['deleteId'])) {
+  $delete = base64_decode($_GET['deleteId']);
+  $sql = "DELETE FROM `usertable` WHERE `userId` = $delete";
+  $result = mysqli_query($conn,$sql) or dir("faild to delte ");
+}
 ?>
-
 
 <div class="container">
   <?php
-  $sql = "SELECT * FROM `usertable` ORDER BY`userId`DESC;";
+  $sql = "SELECT * FROM `usertable` ORDER BY`userId`DESC";
   $result = mysqli_query($conn, $sql) or die("query unsuccessfull");
   if (mysqli_num_rows($result) > 0) {
   ?>
@@ -26,7 +30,7 @@ include_once "config.php";
         </tr>
       </thead>
       <tbody>
-        <?php if ($result) {
+        <?php 
           while ($row = mysqli_fetch_assoc($result)) {
         ?>
             <tr>
@@ -44,16 +48,14 @@ include_once "config.php";
                  <option value="1" selected >Member</option>';
                 } ?>
               </td>
-              <td> <a class="btn btn-primary text-light" href="edit-user.php?edit = <?php echo $row["userId"]; ?>" role="button">Edit</a></td>
-              <td> <input type="submit" value="" href="edit-user.php?edit = <?php echo $row["userId"]; ?>"><i class="bi bi-clipboard-plus-fill"></i></td>
+              <td> <a class="btn btn-primary text-light" href="edit-user.php?edit=<?php echo base64_encode($row['userId']) ?>" role="button">Edit</a></td>
               <td>
-                <a class="btn btn-danger text-light" href="user.php? deleteId  =<?php echo $row["userId"]; ?>" role="button">Delete</a>
-                <!--<button  class="btn btn-danger text-light" href="./user.php? deleteId =<?php $row['userId']; ?>" role="button">Delete</button>-->
+                <a class="btn btn-danger text-light" href="user.php?deleteId=<?php echo base64_encode($row['userId']) ?>" role="button">Delete</a>
               </td>
             </tr>
         <?php
           };
-        } ?>
+        ?>
 
       </tbody>
     </table>
