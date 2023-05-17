@@ -1,6 +1,7 @@
 <?php
+include_once "config.php";
+include_once "header.php";
 
-  include_once "config.php";
 ?>
 
 <!-- Section: Design Block -->
@@ -30,17 +31,17 @@
       <div class="col-lg-8">
         <div class="card-body py-5 px-md-5">
 
-          <form method="post">
+          <form method="POST">
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <label class="form-label" name = "userName">User Name</label>
-              <input type="text"  class="form-control" />
+              <label class="form-label" >User Name</label>
+              <input type="text"name ="userName"  class="form-control" />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <label class="form-label"  name = "pass">Password</label>
-              <input type="password"  class="form-control" />
+              <label class="form-label"  >Password</label>
+              <input type="password" name ="pass" class="form-control" />
             </div>
 
               <div class="col">
@@ -50,21 +51,21 @@
             </div>
 
             <!-- Submit button -->
-            <button type="button" class="btn btn-primary btn-block mb-4 shadow-none" name="logIn">Log in</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4 shadow-none" name="logIn">Log in</button>
 
           </form>
           <?php
             if (isset($_POST['logIn'])) {
-              $userName = mysqli_real_escape_string($conn,$_POST['userName']);
+              $userName =$_POST['userName'];
               $pass = md5($_POST['pass']);
-              echo $sql = "SELECT `userId`, `userName`, `password`, `role`FROM `usertable` WHERE `userName`=$userName,`password`=$pass";
-              die('quer faild');
+              $sql = "SELECT  `userName`, `password` FROM `usertable` WHERE `userName`={$userName} AND `password`={$pass}";
+
               $result = mysqli_query($conn, $sql) or die("query faild");
               if(mysqli_num_rows($result)>0 ){
                 while ($row = mysqli_fetch_assoc($result)) {
                   session_start();
                   $_SESSION['userName'] = $row ['userName'];
-                  $_SESSION['userID'] = $row ['userID'];
+                  $_SESSION['userID'] = $row ['userId'];
                   $_SESSION['role'] = $row ['role'];
                   header("location:add-post.php");
                 }
