@@ -58,7 +58,7 @@ include_once "header.php";
             if (isset($_POST['logIn'])) {
               $userName =$_POST['userName'];
               $pass = md5($_POST['pass']);
-              $sql = "SELECT  `userName`, `password` FROM `usertable` WHERE `userName`={$userName} AND `password`={$pass}";
+              $sql = "SELECT  * FROM `usertable` WHERE `userName`='$userName' AND `password`='$pass'";
 
               $result = mysqli_query($conn, $sql) or die("query faild");
               if(mysqli_num_rows($result)>0 ){
@@ -66,7 +66,6 @@ include_once "header.php";
                   session_start();
                   $_SESSION['userName'] = $row ['userName'];
                   $_SESSION['userID'] = $row ['userId'];
-                  $_SESSION['role'] = $row ['role'];
                   header("location:add-post.php");
                 }
               }else{

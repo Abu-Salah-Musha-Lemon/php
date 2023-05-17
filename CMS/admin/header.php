@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    
     <link href="../templatemo_style.css" rel="stylesheet" type="text/css" />
     <title>Admin</title>
 </head>
@@ -28,7 +30,7 @@
 
             <ul>
                 <li><a href="../admin/user.php" class="current">User</a></li>
-                <li><a href="../admin/add-post.php">Post</a></li>
+                <li><a href="../admin/post.php">Post</a></li>
                 <li><a href="../admin/category.php">Categori</a></li>
             </ul>
 
