@@ -3,11 +3,6 @@ include_once("config.php");
 include_once("header.php");
 $id = base64_decode($_GET["edit"]);
 if (isset($_POST['update'])) {
-  // $firstName = $_POST["firstName"];
-  // $lastName = $_POST["lastName"];
-  // $userName = $_POST["userName"];
-  // $email = $_POST["email"];
-  // $role = $_POST["role"];
   $firstName = mysqli_real_escape_string($conn, $_POST["firstName"]);
   $lastName = mysqli_real_escape_string($conn, $_POST["lastName"]);
   $email = mysqli_real_escape_string($conn, $_POST["email"]);

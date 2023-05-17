@@ -1,60 +1,86 @@
+<?php
 
+  include_once "config.php";
+?>
 
-<section class="h-100 gradient-form" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
-        <div class="card rounded-3 text-black">
-          <div class="row g-0">
-            <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+<!-- Section: Design Block -->
+<section class=" text-center text-lg-start">
+  <style>
+    .rounded-t-5 {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
 
-                <div class="text-center">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
-                </div>
+    @media (min-width: 992px) {
+      .rounded-tr-lg-0 {
+        border-top-right-radius: 0;
+      }
 
-                <form>
-                  <p>Please login to your account</p>
+      .rounded-bl-lg-5 {
+        border-bottom-left-radius: 0.5rem;
+      }
+    }
+  </style>
+  <div class="card mb-3 container md-5 mt-2">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <!-- <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" /> -->
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
 
-                  <div class="form-outline mb-4">
-                    <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Phone number or email address" />
-                    <label class="form-label" for="form2Example11">Username</label>
-                  </div>
+          <form method="post">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" name = "userName">User Name</label>
+              <input type="text"  class="form-control" />
+            </div>
 
-                  <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" />
-                    <label class="form-label" for="form2Example22">Password</label>
-                  </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <label class="form-label"  name = "pass">Password</label>
+              <input type="password"  class="form-control" />
+            </div>
 
-                  <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log
-                      in</button>
-                    <a class="text-muted" href="#!">Forgot password?</a>
-                  </div>
-
-                  <div class="d-flex align-items-center justify-content-center pb-4">
-                    <p class="mb-0 me-2">Don't have an account?</p>
-                    <button type="button" class="btn btn-outline-danger">Create new</button>
-                  </div>
-
-                </form>
-
+              <div class="col">
+                <!-- Simple link -->
+                <a href="#!">Forgot password?</a>
               </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">We are more than just a company</h4>
-                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-            </div>
-          </div>
+
+            <!-- Submit button -->
+            <button type="button" class="btn btn-primary btn-block mb-4 shadow-none" name="logIn">Log in</button>
+
+          </form>
+          <?php
+            if (isset($_POST['logIn'])) {
+              $userName = mysqli_real_escape_string($conn,$_POST['userName']);
+              $pass = md5($_POST['pass']);
+              echo $sql = "SELECT `userId`, `userName`, `password`, `role`FROM `usertable` WHERE `userName`=$userName,`password`=$pass";
+              die('quer faild');
+              $result = mysqli_query($conn, $sql) or die("query faild");
+              if(mysqli_num_rows($result)>0 ){
+                while ($row = mysqli_fetch_assoc($result)) {
+                  session_start();
+                  $_SESSION['userName'] = $row ['userName'];
+                  $_SESSION['userID'] = $row ['userID'];
+                  $_SESSION['role'] = $row ['role'];
+                  header("location:add-post.php");
+                }
+              }else{
+                echo' <div class="alert alert-danger">
+                      user Name and password is not match.
+              </div>';
+              }
+            }
+          ?>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- Section: Design Block -->
+
+
+<?php include_once "footer.php";?>

@@ -15,7 +15,7 @@
         <div id="templatemo_header">
 
             <div id="site_title">
-                <h1><a href="index.html">ASM Lemon</a></h1>
+                <h1><a href="index.php">ASM Lemon</a></h1>
             </div>
 
             <div id="templatemo_rss">
@@ -28,7 +28,7 @@
 
             <ul>
                 <li><a href="../admin/user.php" class="current">User</a></li>
-                <li><a href="../admin/post.php">Post</a></li>
+                <li><a href="../admin/add-post.php">Post</a></li>
                 <li><a href="../admin/category.php">Categori</a></li>
             </ul>
 

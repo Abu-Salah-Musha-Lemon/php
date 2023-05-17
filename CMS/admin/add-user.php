@@ -20,7 +20,6 @@ if (isset($_POST["save"])) {
   } else {
     $sql1 = "INSERT INTO `usertable`( `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES ('$firstName','$lastName','$userName','$pass','$role','$email')";
     $result = mysqli_query($conn, $sql1);
-    header("localhost:user.php");
     if ($result) {
       header("localhost:user.php"); //it's not work 
     }

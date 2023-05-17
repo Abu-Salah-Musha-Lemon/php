@@ -10,6 +10,8 @@ if (isset($_GET['deleteId'])) {
 ?>
 
 <div class="container">
+  <h2 class=" align-item-left md-5 mt-1">All User</h2>
+  <a href="./add-user.php" type="button" class="btn btn-success text-white mb-2">Add User</a>
   <?php
   $limit = 3;
   if (isset($_GET['page'])) {
@@ -24,8 +26,6 @@ if (isset($_GET['deleteId'])) {
   if (mysqli_num_rows($result) > 0) {
   ?>
     <table class="table table-striped">
-      <h2>All User</h2>
-      <a href="./add-user.php" type="button" class="btn btn-success text-white">Add User</a>
       <thead>
         <tr>
           <th scope="col">#</th>
