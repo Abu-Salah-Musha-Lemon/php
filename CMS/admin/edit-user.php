@@ -11,6 +11,7 @@ if (isset($_POST['update'])) {
   $role = mysqli_real_escape_string($conn, $_POST["role"]);
   $sqli1 = "UPDATE `usertable` SET `userId`='$id',`firstName`='$firstName',`lastName`='$lastName',`userName`='$userName',`role`='$role',`email`='$email' WHERE `userId`='$id'";
   $result = mysqli_query($conn, $sqli1);
+  // header("location:user.php"); its not work;
   if ($result) {
     header("location:user.php");
   }
