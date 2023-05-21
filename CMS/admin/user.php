@@ -1,10 +1,11 @@
 <?php
-include_once("header.php");
-include_once "config.php";
-// base64 is incerpted system.
+// session_start();
 if ($_SESSION['role'] == 1) {
   header("localhost:http://localhost/learnPhp/CMS/admin/post.php");
 }
+include_once("header.php");
+include_once "config.php";
+// base64 is incerpted system.
 if (isset($_GET['deleteId'])) {
   $delete = base64_decode($_GET['deleteId']);
   $sql = "DELETE FROM `usertable` WHERE `userId` = $delete";
