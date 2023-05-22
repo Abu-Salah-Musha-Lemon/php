@@ -1,7 +1,6 @@
 <?php
 include_once "config.php";
 
-
 ?>
 
 <head>
@@ -15,13 +14,13 @@ include_once "config.php";
   <title>Admin</title>
 </head>
 
-
-<section class="vh-100 gradient-custom">
-  <div class="container py-5 h-100">
+<section class="bg-secondary vh-100 gradient-custom">
+  <div class="container  py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="col-12  col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
+
             <form action="" method="post">
               <div class="mb-md-5 mt-md-4 pb-5">
 
@@ -70,12 +69,13 @@ include_once "config.php";
                     <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
                  </div> -->
 
-                </div>
+
                 <div>
                   <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
                   </p>
                 </div>
             </form>
+
           </div>
         </div>
       </div>
@@ -83,5 +83,3 @@ include_once "config.php";
   </div>
 </section>
 
-<!-- 
-<?php include_once "footer.php"; ?> -->
