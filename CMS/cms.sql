@@ -70,7 +70,10 @@ CREATE TABLE `usertable` (
 --
 
 INSERT INTO `usertable` (`userId`, `firstName`, `lastName`, `userName`, `password`, `role`, `email`) VALUES
-(1, 'lemon', 'ahmed', 'lemon ahmed', 'admin', 1, '');
+(32, 'lemon', 'ahmed', 'lemon', '21232f297a57a5a743894a0e4a801fc3', 0, 'lemon@gmail.com'),
+(34, 'leon', 'leon', 'leon', '202cb962ac59075b964b07152d234b70', 1, 'leon@gmail.com'),
+(39, 'admin', 'admin01', 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, 'admin@gmail.com'),
+(40, 'member', 'member01', 'member', 'aa08769cdcb26674c6706093503ff0a3', 1, 'member@gmail.com');
 
 --
 -- Indexes for dumped tables
