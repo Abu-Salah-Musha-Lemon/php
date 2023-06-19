@@ -3,7 +3,7 @@ include_once "header.php";
 include_once "config.php";
 if (isset($_GET['delete'])) {
     $delete = base64_decode($_GET['delete']);
-    $sql = "DELETE FROM `post-table` WHERE `Post-ID` = $delete";
+    $sql = "DELETE FROM `post_table` WHERE `Post-ID` = $delete";
     $result = mysqli_query($conn, $sql) or dir("faild to delte ");
   }
 
@@ -11,7 +11,7 @@ if (isset($_GET['delete'])) {
 <div class="container md-5">
     <a href="./add-post.php?" role="button"><i class="bi bi-person-add btn btn-success my-2"></i></a>
     <?php
-    $sql = "SELECT * FROM `post-table`ORDER BY`Post-ID`DESC ";
+    $sql = "SELECT post_table.`Post-ID`, post_table.`Post-Title`, post_table.`Post-Description`, post_table.`Post-Date`, post_table.`Post-Image`,  post_table.`Category`, post_table.`Author`, categorytable.CategoryName FROM post_table LEFT JOIN categorytable ON post_table.`Category`= categorytable.CategoryName WHERE post_table.`Post-ID` = `Post-ID`";
     $result = mysqli_query($conn, $sql) or die("query unsuccessfull");
     if (mysqli_num_rows($result) > 0) {
        
@@ -39,8 +39,8 @@ if (isset($_GET['delete'])) {
                     <td>' . $row["Post-Title"] . '</td>
                     <td>' . $row["Post-Description"] . '</td>
                     <td>' . $row["Post-Date"] . '</td>
-                    <td>' . $row["Post-image"] . '</td>
-                    <td>' . $row["Category"] . '</td>
+                    <td> <img src="/CMS/admin/uplode/"></td>
+                    <td>' . $row["CategoryName"] . '</td>
                     <td>' . $row["Author"] . '</td>
                     <td > 
                             <a  href="./edit-post.php?edit-post='.base64_encode($row["Post-ID"]).'" role="button"><i class="btn btn-primary bi bi-pencil-square"></i>
@@ -55,6 +55,7 @@ if (isset($_GET['delete'])) {
              
             </tbody>
         </table>
+       
 
     <?php } ?>
 </div>
