@@ -10,14 +10,14 @@ if (isset($_GET['delete'])) {
 ?>
 
 <div class="container md-5">
- <!--    <div class="container mt-3">
+    <div class="container mt-3">
 
         <i class="bi bi-person-add btn btn-success my-2" data-bs-toggle="modal" data-bs-target="#myModal"></i>
     </div>
 
     
     <div class="modal" id="myModal">
-        <form action="categoru.php" method="post">
+        <form action="" method="post">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -37,7 +37,7 @@ if (isset($_GET['delete'])) {
 
                    
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" name="cSave">Save</button>
+                        <button type="submit" class="btn btn-success" name="cSave">Save</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 
                     </div>
@@ -45,22 +45,22 @@ if (isset($_GET['delete'])) {
                 </div>
         </form>
 
-        <?php
-        if (isset($_POST['cSave'])) {
-            $cName = $_POST['cName'];
-            $sql = "INSERT INTO `categorytable`(`CategoryName`) VALUES ('$cName')";
-            $result = mysqli_query($conn, $sql) or die("query faild");
-        }
+        <?php if (isset($_POST['cSave'])) {
+    $cName = $_POST['cName'];
+    $sql = "INSERT INTO `categorytable`( `CategoryName`) VALUES ('$cName');";
+    $result = mysqli_query($conn , $sql);
+
+}
         ?>
     </div>
-</div> -->
+</div>
 <?php
 $sql = "SELECT * FROM `categorytable`ORDER BY`Category_ID`DESC ";
 $result = mysqli_query($conn, $sql) or die("query unsuccessfull");
 if (mysqli_num_rows($result) > 0) {
 
 ?>
-<a href="add-category.php">  <i class="bi bi-person-add btn btn-success my-2" ></i></a>
+<!-- <a href="add-category.php">  <i class="bi bi-person-add btn btn-success my-2" ></i></a> -->
     <table class="table md-5">
         <thead>
             <tr>
