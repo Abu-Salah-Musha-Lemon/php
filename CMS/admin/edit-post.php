@@ -1,61 +1,59 @@
 <?php
 include_once "header.php";
 include_once "config.php";
-$id = base64_decode($_GET["edit-post"]);
+$post_id = base64_decode($_GET["edit-post"]);
 ?>
 <div class="container md-5 mt-3 mb-4">
   <?php
-  if (isset( $_POST['submit'])) {
-    $pTitle = mysqli_real_escape_string($conn, $_POST['post-title']);
-    $pDesc = mysqli_real_escape_string($conn, $_POST['Desc']);
-    $pCategory = mysqli_real_escape_string($conn, $_POST['Category']);
-    $pAuthor = mysqli_real_escape_string($conn, $_POST['author']);
-    $sql = "UPDATE `post-table` SET `Post-Title`='$pTitle',`Post-Description`='$pDesc',`Category`='$pCategory',`Author`='$pAuthor' WHERE `Post-ID`='$id'";
-    
-    $result = mysqli_query($conn, $sql) ;
-    if ($result) {
-      header("location:post.php");
-    }
-  }
-  // $sql1="SELECT * FROM `post-table`WHERE `Post-ID`=`$id`";
-  // $result = mysqli_query($conn, $sql1) or die("query faild");
-  // // if (mysqli_num_rows($result) > 0) {
-  //   while ($row = mysqli_fetch_assoc($result)) {
-  //         $pTitle =  $row['Post-Title'];
-  //         $pDesc = $row['Post-Description'];
-  //         $pCategory = $row['Category'];
-  //         $pAuthor =  $row['Author'];
+  $sql = "SELECT post_table.`Post_ID`, post_table.`Post_Title`, post_table.`Post_Description`, post_table.`Post_Date`, post_table.`Post_Image`,  post_table.`Category`, post_table.`Author`, categorytable.CategoryName, `usertable`.`userName` FROM post_table LEFT JOIN categorytable ON post_table.`category`= categorytable.Category_ID LEFT JOIN usertable ON `post_table`.`Author` = usertable.userId  WHERE post_table.post_ID = {$post_id}";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+
   ?>
 
-    <form method="post">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Post Title</label>
-        <input type="text" class="form-control" name="post-title" value="<?php // echo $row[$pTitle];?>">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Description</label>
-        <input type="text area" class="form-control" name="Desc" value="<?php // echo $row[$pDesc];?>">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Category</label>
-        <input type="text" class="form-control" name="Category" value="<?php // echo $row[$pCategory];?>">
-      </div>
-      <div class="form-group">
+      <form method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Post Title</label>
+          <input type="text" class="form-control" name="post-title" value="<?php echo $row['Post_Title']; ?>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Description</label>
+          <input type="text area" class="form-control" name="Desc" value="<?php echo $row['Post_Description']; ?>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Category</label>
+          <select class="custom-select my-1 mr-sm-2" name="Category">
+            <?php
+            $category = "SELECT * FROM `categorytable`";
+            $result = mysqli_query($conn, $category);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                echo ' <option class="dropdown-item" value=' . $row["Category_ID"] . '>' . $row["CategoryName"] . '</option>';
+              }
+            }
+            ?>
+          </select>
+        </div>
+        <!--    <div class="form-group">
         <label for="exampleInputEmail1">Author</label>
-        <input type="text" class="form-control" name="author" value="<?php // echo $row[$pAuthor];?>">
-      </div>
+        <input type="text" class="form-control" name="author" value="<?php // echo $row[$pAuthor];
+                                                                      ?>">
+      </div> -->
 
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label><br>
-        <input type="file" class="form-control-file" name="image">
-      </div>
-      <br>
-      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-    </form>
-<!-- 
-  <?php //}
-  // }
-  ?> -->
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Example file input</label><br>
+          <img src="upload/<?php echo $row['Post_Image']; ?>" alt="" srcset="">
+          <input type="file" class="form-control-file" name="image">
+
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+      </form>
+  <?php }
+  } else {
+    echo "result is not found";
+  } ?>
 </div>
 
 

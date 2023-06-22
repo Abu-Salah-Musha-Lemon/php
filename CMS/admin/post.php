@@ -3,7 +3,7 @@ include_once "header.php";
 include_once "config.php";
 if (isset($_GET['delete'])) {
     $delete = base64_decode($_GET['delete']);
-    $sql = "DELETE FROM `post_table` WHERE `Post-ID` = $delete";
+    $sql = "DELETE FROM `post_table` WHERE `Post_ID` = $delete";
     $result = mysqli_query($conn, $sql) or dir("faild to delte ");
   }
 
@@ -30,8 +30,6 @@ if (isset($_GET['delete'])) {
   }
 
     $result = mysqli_query($conn, $sql);
-
-
     if (mysqli_num_rows($result) > 0) {
        
     ?>
