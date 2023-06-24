@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2023 at 03:52 AM
+-- Generation Time: Jun 24, 2023 at 06:23 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -38,8 +38,11 @@ CREATE TABLE `categorytable` (
 --
 
 INSERT INTO `categorytable` (`Category_ID`, `CategoryName`, `Post`) VALUES
-(1, 'phone', 6),
-(6, 'Helth', 2);
+(1, 'phone', 20),
+(6, 'Helth', 6),
+(10, 'leon', 0),
+(11, 'leon', 0),
+(12, 'city', 1);
 
 -- --------------------------------------------------------
 
@@ -48,11 +51,11 @@ INSERT INTO `categorytable` (`Category_ID`, `CategoryName`, `Post`) VALUES
 --
 
 CREATE TABLE `post_table` (
-  `Post-ID` int(11) NOT NULL,
-  `Post-Title` varchar(255) NOT NULL,
-  `Post-Description` text NOT NULL,
-  `Post-Date` datetime NOT NULL,
-  `Post-Image` varchar(255) NOT NULL,
+  `Post_ID` int(11) NOT NULL,
+  `Post_Title` varchar(255) NOT NULL,
+  `Post_Description` text NOT NULL,
+  `Post_Date` datetime NOT NULL,
+  `Post_Image` varchar(255) NOT NULL,
   `Category` varchar(255) NOT NULL,
   `Author` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,15 +64,10 @@ CREATE TABLE `post_table` (
 -- Dumping data for table `post_table`
 --
 
-INSERT INTO `post_table` (`Post-ID`, `Post-Title`, `Post-Description`, `Post-Date`, `Post-Image`, `Category`, `Author`) VALUES
-(11, 'nokia', 'nokia4', '0000-00-00 00:00:00', '', 'phone', 'lemon'),
-(12, 'xiome', 'text', '0000-00-00 00:00:00', '', '', 'leon'),
-(17, 'xiome', 'test', '0000-00-00 00:00:00', '', '1', 'x'),
-(18, 'xiome', 'text', '0000-00-00 00:00:00', 'Apple-iPhone-12-Pro-Max-Blue.jpg', '1', 'redoy'),
-(19, 'xiome', 'text', '0000-00-00 00:00:00', 'Apple-iPhone-12-Pro-Max-Blue.jpg', '1', 'redoy'),
-(20, 'xiome', '03test', '0000-00-00 00:00:00', 'Apple_iPhone_12_Pro_Max_Graphite_1000_0002.jpg', '1', 'x'),
-(21, 'xiome', '03test', '0000-00-00 00:00:00', 'Apple_iPhone_12_Pro_Max_Graphite_1000_0002.jpg', '1', 'x'),
-(22, 'xiome', '03test', '0000-00-00 00:00:00', 'Apple_iPhone_12_Pro_Max_Graphite_1000_0002.jpg', '1', 'x');
+INSERT INTO `post_table` (`Post_ID`, `Post_Title`, `Post_Description`, `Post_Date`, `Post_Image`, `Category`, `Author`) VALUES
+(43, 'symphoney', 'nokia4', '0000-00-00 00:00:00', '3719937_1.jpg', '6', '43'),
+(44, 'symphoney', 'nokia4', '0000-00-00 00:00:00', '3719937_1.jpg', '6', '43'),
+(45, 'xiome', '03test', '0000-00-00 00:00:00', '3719937_1.jpg', '12', '43');
 
 -- --------------------------------------------------------
 
@@ -111,7 +109,7 @@ ALTER TABLE `categorytable`
 -- Indexes for table `post_table`
 --
 ALTER TABLE `post_table`
-  ADD PRIMARY KEY (`Post-ID`);
+  ADD PRIMARY KEY (`Post_ID`);
 
 --
 -- Indexes for table `usertable`
@@ -127,13 +125,13 @@ ALTER TABLE `usertable`
 -- AUTO_INCREMENT for table `categorytable`
 --
 ALTER TABLE `categorytable`
-  MODIFY `Category_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Category_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `post_table`
 --
 ALTER TABLE `post_table`
-  MODIFY `Post-ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `usertable`

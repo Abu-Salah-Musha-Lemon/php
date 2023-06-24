@@ -3,7 +3,6 @@ include_once "header.php";
 include_once "config.php";
 $post_id = $_GET["edit_post"];
 
-
 ?>
 <div class="container md-5 mt-4 mb-6">
 
@@ -14,53 +13,53 @@ $post_id = $_GET["edit_post"];
     while ($row = mysqli_fetch_assoc($result)) {
 
   ?>
-      <form action="save-update-post.php" method="post" enctype="multipart/form-data"">
+      <form action="save-update-post.php" method="post" enctype="multipart/form-data">
 
-        <section  style=" background-color: ;">
-        <div class="container py-4 ">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                <div class="card-body p-5 text-center">
+        <section style=" background-color: ;">
+          <div class="container py-4 ">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                  <div class="card-body p-5 text-center">
 
-                  <h3 class="mb-3">Update</h3>
-                  <div class="form-group">
-                    <label>Post Title</label>
-                    <input type="text" class="form-control shadow-none" name="post-title" value="<?php echo $row['Post_Title']; ?>">
-                  </div>
-                  <div class="form-group">
-                    <label>Description</label>
-                    <input type="text-area" class="form-control shadow-none" name="Desc" value="<?php echo $row['Post_Description']; ?>">
-                  </div>
-                  <div class="form-group">
-                    <label>Category</label>
-                    <select class="custom-select my-1 mr-sm-2" name="Category">
-                      <?php
-                      $category1 = "SELECT * FROM `categorytable`";
-                      $result1 = mysqli_query($conn, $category1);
-                      if (mysqli_num_rows($result1) > 0) {
-                        while ($row1 = mysqli_fetch_assoc($result1)) {
-                          // it is not work poroperly
-                          if ($row['Category'] == $row1['Category_ID']) {
-                            $selected = 'selected';
-                          }else{
-                            $selected = "";
+                    <h3 class="mb-3">Update</h3>
+                    <div class="form-group">
+                      <label>Post Title</label>
+                      <input type="text" class="form-control shadow-none" name="post-title" value="<?php echo $row['Post_Title']; ?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Description</label>
+                      <input type="text-area" class="form-control shadow-none" name="Desc" value="<?php echo $row['Post_Description']; ?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Category</label>
+                      <select class="custom-select my-1 mr-sm-2" name="Category">
+                        <?php
+                        $category1 = "SELECT * FROM `categorytable`";
+                        $result1 = mysqli_query($conn, $category1);
+                        if (mysqli_num_rows($result1) > 0) {
+                          while ($row1 = mysqli_fetch_assoc($result1)) {
+                            // it is not work poroperly
+                            if ($row['Category'] == $row1['Category_ID']) {
+                              $selected = 'selected';
+                            } else {
+                              $selected = "";
+                            }
+                            echo ' <option class="dropdown-item"' . $selected . ' value=' . $row1["Category_ID"] . '>' . $row1["CategoryName"] . '</option>';
                           }
-                          echo ' <option class="dropdown-item"'.$selected.' value=' . $row1["Category_ID"] . '>' . $row1["CategoryName"] . '</option>';
                         }
-                      }
-                      ?>
-                    </select>
-                  </div>
+                        ?>
+                      </select>
+                    </div>
 
-                  <div class="form-group">
-                    <img class="my-2" style="width:150px;height:100px;"src="upload/<?php echo $row['Post_Image'];?>" alt="" srcset="">
-                    <input type="file" class="form-control-file" name="new_image">
-                    <input type="hidden" class="form-control-file" name="old_image" value="<?php echo $row['Post_Image'];?>">
+                    <div class="form-group">
+                      <img class="my-2" style="width:150px;height:100px;" src="upload/<?php echo $row['Post_Image']; ?>" alt="" srcset="">
+                      <input type="file" class="form-control-file" name="new_image">
+                      <input type="hidden" class="form-control-file" name="old_image" value="<?php echo $row['Post_Image']; ?>">
 
-                  </div>
-                  <br>
-                  <button type="submit" class="btn btn-primary" name="submit">Update</button>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="submit">Update</button>
       </form>
   <?php }
   } else {
