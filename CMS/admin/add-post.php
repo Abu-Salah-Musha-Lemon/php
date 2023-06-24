@@ -16,10 +16,6 @@ include_once "config.php";
       <input type="text area" class="form-control" name="Desc" placeholder="Description">
     </div>
 
-    <!-- <div class="form-group">
-      <label for="exampleInputEmail1">Author</label>
-      <input type="text" class="form-control" name="author" placeholder="Authore">
-    </div> -->
     <div class="form-group form-inlinere">
       <label class="my-1 mr-2">Category</label>
       <select class="custom-select my-1 mr-sm-2" name="Category">

@@ -65,7 +65,7 @@ if (isset($_GET['delete'])) {
 
                     <td>' . $row["userName"] . '</td>
                     <td > 
-                            <a  href="./edit-post.php?edit-post='.base64_encode($row["Post_ID"]).'" role="button"><i class="btn btn-primary bi bi-pencil-square"></i>
+                            <a  href="./edit-post.php?edit_post='.($row["Post_ID"]).'" role="button"><i class="btn btn-primary bi bi-pencil-square"></i>
                             </a>
                             <a href="./post.php?delete='.base64_encode($row["Post_ID"]).'" role="button"><i class="btn btn-danger bi bi-trash"></i></a>
                         </td>
@@ -78,7 +78,8 @@ if (isset($_GET['delete'])) {
                     }
 
                     ?>
-             
+                     <!-- <a  href="./edit-post.php?edit-post='.base64_encode($row["Post_ID"]).'" role="button"><i class="btn btn-primary bi bi-pencil-square"></i> -->
+                            </a>
             </tbody>
         </table>
         <?php

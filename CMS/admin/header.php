@@ -43,7 +43,7 @@ if (!isset($_SESSION['userName'])) {
                 <?php
                 if ($_SESSION['role'] == 0) {
                 ?>
-                    <li><a href="../admin/user.php" class="current">User</a></li>
+                    <li><a href="../admin/user.php" >User</a></li>
                     <li><a href="../admin/category.php">category</a></li>
 
                 <?php }
