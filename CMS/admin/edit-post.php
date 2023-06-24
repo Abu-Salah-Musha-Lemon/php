@@ -15,7 +15,7 @@ $post_id = $_GET["edit_post"];
   ?>
       <form action="save-update-post.php" method="post" enctype="multipart/form-data">
 
-        <section style=" background-color: ;">
+        <section style=" ">
           <div class="container py-4 ">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-12 col-md-8 col-lg-6 col-xl-5">
