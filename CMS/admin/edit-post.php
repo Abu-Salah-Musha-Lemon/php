@@ -16,7 +16,7 @@ $post_id = $_GET["edit_post"];
       <form action="save-update-post.php" method="post" enctype="multipart/form-data">
 
         <section style=" ">
-          <div class="container py-4 ">
+          <div class="container pb-2 ">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
@@ -56,7 +56,7 @@ $post_id = $_GET["edit_post"];
                       <img class="my-2" style="width:150px;height:100px;" src="upload/<?php echo $row['Post_Image']; ?>" alt="" srcset="">
                       <input type="file" class="form-control-file" name="new_image">
                       <input type="hidden" class="form-control-file" name="old_image" value="<?php echo $row['Post_Image']; ?>">
-                      <input type="text" class="form-control-file" name="edit_post" value="<?php echo $post_id; ?> hidden">
+                      <input type="text" class="form-control-file" name="edit_post" value="<?php echo $post_id; ?> ">
 
                     </div>
                     <br>

@@ -15,7 +15,8 @@ if (isset($_GET['deleteId'])) {
 
 <div class="container">
   <h2 class=" align-item-left md-5 mt-1">All User</h2>
-  <a href="./add-user.php" type="button" class="btn btn-success text-white mb-2">Add User</a>
+  <!-- <a href="./add-user.php" type="button" class="btn btn-success text-white mb-2">Add User</a> -->
+  <a href="./add-user.php" role="button"><i class="bi bi-person-add btn btn-success mb-2"></i></a>
   <?php
   $limit = 3;
   if (isset($_GET['page'])) {

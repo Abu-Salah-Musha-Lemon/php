@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
   $pcate = $_POST['Category'];
   $old_image = $_POST['old_image'];
   $new_image = $_FILES['new_image']['name'];
+  $new_image = $_FILES['new_image']['name'];
 
 
   if (file_exists('update/' . $new_image)) {
