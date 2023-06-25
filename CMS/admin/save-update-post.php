@@ -26,7 +26,7 @@ include_once "config.php";
   }
 
 
-  echo $sql3 = "UPDATE `post_table` SET `Post_Title`='{$_POST['post-title']}',`Post_Description`='{$_POST['Desc']}',`Post_Image`={$file_name},`Category`={$_POST['Category']} WHERE `Post_ID`= {$_POST['edit_post']}";
+  echo $sql3 = "UPDATE `post_table` SET `Post_Title`='{$_POST['post-title']}',`Post_Description`='{$_POST['Desc']}',`Post_Image`={$_POST['edit_post']},`Category`={$_POST['Category']} WHERE `Post_ID`= {$_POST['edit_post']}";
   $result3 = mysqli_query($conn, $sql3);
   if ($result3) {
     header("Localhost:http://localhost/learnPhp/CMS/admin/post.php");

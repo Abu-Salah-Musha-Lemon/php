@@ -56,6 +56,7 @@ $post_id = $_GET["edit_post"];
                       <img class="my-2" style="width:150px;height:100px;" src="upload/<?php echo $row['Post_Image']; ?>" alt="" srcset="">
                       <input type="file" class="form-control-file" name="new_image">
                       <input type="hidden" class="form-control-file" name="old_image" value="<?php echo $row['Post_Image']; ?>">
+                      <input type="text" class="form-control-file" name="edit_post" value="<?php echo $post_id; ?> hidden">
 
                     </div>
                     <br>
