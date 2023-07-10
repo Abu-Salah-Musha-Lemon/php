@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-nav{
+    background-color: #1BAFD5;
+    color: white;
+    border-top: 1px solid #2CC9ED ;
+    border-bottom:#12A0C4 ;
+    /* box-shadow: inset .5px .6px .4px solid rgba(0, 0, 0, .2),
+                inset -.5px .5px -.5px solid rgba(0, 0, 0, .1); */
+    background-color: linear-gradient( 0deg  ,#2CC9ED ,#18AACF );
+}
+.tx-c{
+    color: white;
+}
