@@ -1,5 +1,7 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+include_once "./admin/config.php";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -7,9 +9,7 @@
     <title>Tripod Blog Theme - Free CSS Templates</title>
     <meta name="keywords" content="free css templates, tripod, blog, theme" />
     <meta name="description" content="Tripod - free CSS template provided by templatemo.com" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="../templatemo_style.css" rel="stylesheet" type="text/css" />
+    <link href="../CMS/templatemo_style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -50,6 +50,8 @@
 
                 <div class="post_section"><span class="bottom"></span>
 
+                    <span class="comment"><a href="blog_post.html">65</a></span>
+
                     <h2><a href="blog_post.html">Aliquam lorem ante dapibus</a></h2>
 
                     <strong>Date:</strong> 25 August 2048 | <strong>Author:</strong> Michael
@@ -68,7 +70,6 @@
                     <div class="category">Tags: <a href="#">Freebies</a>, <a href="#">Templates</a></div>
                     <div class="button float_r"><a href="blog_post.html" class="more">Read more</a></div>
                     <div class="cleaner"></div>
-                    <br>
 
                 </div>
 
@@ -78,7 +79,7 @@
                 </div>
 
 
-                <!-- <div class="post_section"><span class="bottom"></span>
+                <div class="post_section"><span class="bottom"></span>
 
                     <span class="comment"><a href="blog_post.html">45</a></span>
 
@@ -87,9 +88,7 @@
                     <strong>Date:</strong> 24 August 2048 | <strong>Author:</strong> John
                     <a href="#"><img src="images/templatemo_image_02.jpg" alt="image 2" /></a>
 
-                    <p>Credits go to <a href="http://www.phtovaco.com" target="_blank">free photos</a> and <a
-                            href="http://www.smashingmagazine.com/2008/09/23/practika-a-free-icon-set/"
-                            target="_blank">Smashing Magazine</a>. Ut nec vestibulum odio. Vivamus vitae nibh eu sem
+                    <p>Credits go to <a href="http://www.phtovaco.com" target="_blank">free photos</a> and <a href="http://www.smashingmagazine.com/2008/09/23/practika-a-free-icon-set/" target="_blank">Smashing Magazine</a>. Ut nec vestibulum odio. Vivamus vitae nibh eu sem
                         malesuada rutrum et sit amet magna. Cum sociis natoque penatibus et magnis dis parturient
                         montes, nascetur ridiculus mus. Praesent aliquam velit a magna sodales quis elementum ipsum
                         auctor. Ut at metus leo, et dictum sem.</p>
@@ -99,7 +98,7 @@
                     <div class="button float_r"><a href="blog_post.html" class="more">Read more</a></div>
                     <div class="cleaner"></div>
 
-                </div> -->
+                </div>
 
             </div>
 
@@ -108,19 +107,14 @@
             <div id="templatemo_sidebar_two">
 
                 <div class="banner_250x200">
-                    <a href="http://www.templatemo.com" target="_parent"><img src="images/250x200_banner.jpg"
-                            alt="templates" /></a>
+                    <a href="http://www.templatemo.com" target="_parent"><img src="images/250x200_banner.jpg" alt="templates" /></a>
                 </div>
 
                 <div class="banner_125x125">
-                    <a href="http://www.templatemo.com/page/1" target="_parent"><img src="images/templatemo_ads.jpg"
-                            alt="web 1" /></a>
-                    <a href="http://www.templatemo.com/page/2" target="_parent"><img src="images/templatemo_ads.jpg"
-                            alt="web 2" /></a>
-                    <a href="http://www.templatemo.com/page/3" target="_parent"><img src="images/templatemo_ads.jpg"
-                            alt="templates 2" /></a>
-                    <a href="http://www.templatemo.com/page/4" target="_parent"><img src="images/templatemo_ads.jpg"
-                            alt="templates 1" /></a>
+                    <a href="http://www.templatemo.com/page/1" target="_parent"><img src="images/templatemo_ads.jpg" alt="web 1" /></a>
+                    <a href="http://www.templatemo.com/page/2" target="_parent"><img src="images/templatemo_ads.jpg" alt="web 2" /></a>
+                    <a href="http://www.templatemo.com/page/3" target="_parent"><img src="images/templatemo_ads.jpg" alt="templates 2" /></a>
+                    <a href="http://www.templatemo.com/page/4" target="_parent"><img src="images/templatemo_ads.jpg" alt="templates 1" /></a>
                 </div>
 
                 <div class="cleaner_h40"></div>
@@ -148,26 +142,10 @@
         </div> <!-- end of content wrapper -->
     </div>
 
-    <!-- pagination -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
-
     <div id="templatemo_footer_wrapper">
         <div id="templatemo_footer">
 
-            Copyright ©2023 <a href="#">ASM Lemon</a> |
+            Copyright © 2023 <a href="#">lemon</a> |
 
-        </div>
-    </div>
-</body>
+        </div> <!-- end of templatemo_copyright -->
+    </div> <!-- end of copyright wrapper -->
