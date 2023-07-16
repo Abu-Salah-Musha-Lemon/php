@@ -29,6 +29,7 @@
 
             <ul>
                 <li><a href="../CMS/index.php" class="current">Home</a></li>
+                <!-- <li><a href="../CMS/blog.php">Blog</a></li> -->
                 <li><a href="../CMS/por">Portfolio</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html">Contact Us</a></li>

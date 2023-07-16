@@ -31,65 +31,53 @@ include_once "header.php"
                     while ($row = mysqli_fetch_assoc($result)) {
 
                 ?>
-                        <h2><a href="blog.php?blogId=<?php echo $row["Post_ID"] ?>" class="more"> <?php echo $row["Post_Title"]; ?></a></h2>
+                        <h2><a href="blog.php?blogId=<?php echo $row["Post_ID"] ?>" class="more"> <?php echo strtoupper( $row["Post_Title"]); ?></a></h2>
 
-                        <strong>Date:</strong> <?php echo $row["Post_Date"]; ?> | <strong>Author:</strong> <?php echo $row["userName"]; ?>
+                        <strong>Date:</strong> <?php echo $row["Post_Date"]; ?> | <a href="author.php?author=<?php echo $row["Author"]; ?>">
+                        <strong>Author:</strong> <?php echo $row["userName"]; ?></a> 
 
                         <a href="#"><img style="width:420px; height: 340px;" src="./admin/upload/<?php echo $row["Post_Image"]; ?> " /></a>
 
-                        <p> <?php echo  substr($row["Post_Description"], 0, 100); ?> </p>
+                        <p> <?php echo  substr($row["Post_Description"], 0, 100); ?>... </p>
 
                         <div class="cleaner"></div>
-                        <div class="button float_r"><a href="blog.php?blogId=<?php echo $row["Post_ID"] ?>" class="more">Read more</a></div>
+                        <div class="button float_r"><a href="blog.php?blogId=<?php echo $row["Post_ID"] ?>" class="more">Read more ..</a></div>
                         <div class="cleaner"></div>
                         <div class="cleaner"></div>
-                        <br>
+                        <hr class="fs-5 my-2">
                 <?php }
                 } ?>
             </div>
 
 
-            <div class="cleaner_h40">
-                <!-- a spacing between 2 posts -->
-            </div>
 
         </div>
 
 
 
         <div id="templatemo_sidebar_two">
+                <div class="banner_250x200">
+                    <form class="form-inline  my-lg-0 d-flex" method="$_POST">
+                        <input class="form-control mr-sm-2 shadow-none mx-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0 shadow-none" name="search" type="submit">Search</button>
+                    </form>
+                </div>
 
-            <div class="banner_250x200">
-                <a href="http://www.templatemo.com" target="_parent"><img src="images/250x200_banner.jpg" alt="templates" /></a>
+                <div class="cleaner_h40"></div>
+
+                <div class="sidebar_two_box">
+
+                    <h4>Useful Resources</h4>
+                    <ul class="templatemo_list">
+                        <li><a href="#">Curabitur sed lacinia</a></li>
+                        <li><a href="#">Vestibulum laoreet tincidunt</a></li>
+                        <li><a href="#">Nullam nec mi enim</a></li>
+                        <li><a href="#">Aliquam quam nulla</a></li>
+                        <li><a href="#">Curabitur non felis massa</a></li>
+                    </ul>
+                </div>
+
             </div>
-
-            <div class="banner_125x125">
-                <a href="http://www.templatemo.com/page/1" target="_parent"><img src="images/templatemo_ads.jpg" alt="web 1" /></a>
-                <a href="http://www.templatemo.com/page/2" target="_parent"><img src="images/templatemo_ads.jpg" alt="web 2" /></a>
-                <a href="http://www.templatemo.com/page/3" target="_parent"><img src="images/templatemo_ads.jpg" alt="templates 2" /></a>
-                <a href="http://www.templatemo.com/page/4" target="_parent"><img src="images/templatemo_ads.jpg" alt="templates 1" /></a>
-            </div>
-
-            <div class="cleaner_h40"></div>
-
-            <div class="sidebar_two_box">
-
-                <h4>Useful Resources</h4>
-                <ul class="templatemo_list">
-                    <li><a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a></li>
-                    <li><a href="http://www.flashmo.com" target="_parent">Flash Templates</a></li>
-                    <li><a href="http://www.templatemo.com/page/1" target="_parent">Website Templates</a></li>
-                    <li><a href="http://www.webdesignmo.com" target="_parent">Web Design Blog</a></li>
-                    <li><a href="http://www.koflash.com" target="_parent">Flash Web Gallery</a></li>
-                    <li><a href="#">Curabitur sed lacinia</a></li>
-                    <li><a href="#">Vestibulum laoreet tincidunt</a></li>
-                    <li><a href="#">Nullam nec mi enim</a></li>
-                    <li><a href="#">Aliquam quam nulla</a></li>
-                    <li><a href="#">Curabitur non felis massa</a></li>
-                </ul>
-            </div>
-
-        </div>
 
         <div class="cleaner"></div>
     </div> <!-- end of content wrapper -->
