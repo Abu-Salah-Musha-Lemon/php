@@ -1,46 +1,67 @@
-<div id="templatemo_sidebar_one">
-    
-    <h4>Categories</h4>
-    <ul class="templatemo_list">
-        <li><a href="#">Curabitur sed</a></li>
-        <li><a href="#">Praesent adipiscing</a></li>
-        <li><a href="#">Duis sed justo</a></li>
-        <li><a href="#">Mauris vulputate</a></li>
-        <li><a href="#">Nam auctor</a></li>
-        <li><a href="#">Aliquam quam</a></li>
-    </ul>
-    
-    <div class="cleaner_h40"></div>
-    
-    <h4>Archives</h4>
-    <ul class="templatemo_list">
-        <li><a href="#">November 2048</a></li>
-        <li><a href="#">October 2048</a></li>
-        <li><a href="#">September 2048</a></li>
-        <li><a href="#">August 2048</a></li>
-        <li><a href="#">July 2048</a></li>
-        <li><a href="#">June 2048</a></li>
-        <li><a href="#">May 2048</a></li>
-        <li><a href="#">April 2048</a></li>
-        <li><a href="#">March 2048</a></li>
-    </ul>
-    
-    <div class="cleaner_h40"></div>
-    
-    <h4>Recent Posts</h4>
-    <div class="recent_comment_box">
-        <a href="#">Lorem ipsum dolor si</a>
-        <p>Maecenas tellus erat, dictum vel semper a, dapibus ac elit. Nunc rutrum pretium porta.</p>
-    </div>
-    
-     <div class="recent_comment_box">
-        <a href="#">Aenean feugiat mattis </a>
-       <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-    </div>
-    
-      <div class="recent_comment_box">
-        <a href="#"> Lacus enim id lacinia in</a>
-        <p>Curabitur ullamcorper ultricies nisi.  Nam eget dui.   Etiam rhoncus.</p>
-    </div>
 
+<!-- side Bar -->
+<?php include_once "search.php";
+// header("Refresh:3");
+?>
+
+
+<div id="templatemo_sidebar_two">
+    <!-- <div class="cleaner_h40"></div> -->
+    <div class="recent-post-container p-4 shadow-sm bg">
+        <style>
+            .bg{
+                background-color: #F7FFE5;
+            }
+            .recent-post{
+                background-color: #DDE6ED;
+                border-radius: 2px;
+            }
+            .recent {
+                border-left: 2px solid greenyellow;
+                padding-left: 4px;
+                border-bottom: 1px solid rgba(0, 0, 0, .09);
+               
+
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .recent:hover {
+                background-color: rgba(0, 0, 0, .09);
+            }
+        </style>
+        <h4 class="recent">Recent Post</h4>
+        <?php
+        include_once "./admin/config.php";
+        $limit = 3;
+            $sql = "SELECT post_table.`Post_ID`, post_table.`Post_Title`, post_table.`Post_Description`, post_table.`Post_Date`, post_table.`Post_Image`,  post_table.`Category`, post_table.`Author`, categorytable.CategoryName, `usertable`.`userName` FROM post_table LEFT JOIN categorytable ON post_table.`category`= categorytable.Category_ID LEFT JOIN usertable ON `post_table`.`Author` = usertable.userId  ORDER BY post_table.Post_ID DESC LIMIT {$limit}";
+
+        $result = mysqli_query($conn, $sql) or die("recent POst");
+        if (mysqli_num_rows($result) > 0) {
+
+            while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+        <div class="recent-post d-flex flex-row shadow-sm my-2 p-2">
+            <div>
+                <a href="">
+                    <img style="width:50px;height:50px;" src="./admin/upload/<?php echo $row["Post_Image"]; ?>" alt="" srcset="">
+                </a>
+            </div>
+            <div class="post-content mx-2">
+                <h5><a href="blog.php?blogId=<?php echo $row["Post_ID"] ?>" class="more"> <?php echo strtoupper($row["Post_Title"]); ?></a></h5>
+                <span>
+                    <i class="fa fa-tags"> <?php echo $row["Post_Date"]; ?></i>
+                    <a href="author.php?author=<?php echo $row["Author"]; ?>">
+                                <strong>Author:</strong> <?php echo $row["userName"]; ?></a>
+                </span>
+                <span>
+                    <i class="fa-fa-calender"></i>
+                </span>
+                <a href="blog.php?blogId=<?php echo $row["Post_ID"] ?>" class="more">Read more ..</a>
+            </div>
+        </div>
+        <?php }}?>
+    </div>
 </div>

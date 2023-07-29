@@ -67,30 +67,8 @@ include_once "header.php";
 
 
 
-            <div id="templatemo_sidebar_two">
-                <div class="banner_250x200">
-                    <form class="form-inline  my-lg-0 d-flex" method="$_POST">
-                        <input class="form-control mr-sm-2 shadow-none mx-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0 shadow-none" name="search" type="submit">Search</button>
-                    </form>
-                </div>
-
-                <div class="cleaner_h40"></div>
-
-                <div class="sidebar_two_box">
-
-                    <h4>Useful Resources</h4>
-                    <ul class="templatemo_list">
-
-                        <li><a href="#">Curabitur sed lacinia</a></li>
-                        <li><a href="#">Vestibulum laoreet tincidunt</a></li>
-                        <li><a href="#">Nullam nec mi enim</a></li>
-                        <li><a href="#">Aliquam quam nulla</a></li>
-                        <li><a href="#">Curabitur non felis massa</a></li>
-                    </ul>
-                </div>
-
-            </div>
+<!-- side Bar -->
+<?php include_once "sidebar.php"; ?>
 
             <div class="cleaner"></div>
         </div> <!-- end of content wrapper -->
