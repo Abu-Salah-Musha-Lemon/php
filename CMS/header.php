@@ -35,7 +35,7 @@ switch($page_title){
             $post_title = "No post Found";
         }
         break;
-    case "search.php":
+    case "search":
         if(isset($_GET['search'])){
             $url_id=$_GET["search"];
             $sql_title = "SELECT * FROM post_table WHERE Post_ID= {$url_id}";
