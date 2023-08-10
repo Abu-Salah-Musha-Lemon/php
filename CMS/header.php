@@ -80,6 +80,9 @@ switch($page_title){
             <div id="templatemo_rss">
                 <a href="../admin/signup.php">signup<br></a>
             </div>
+            <div id="templatemo_rss">
+                <a href="./admin/login.php">Log in<br></a>
+            </div>
 
         </div>
 

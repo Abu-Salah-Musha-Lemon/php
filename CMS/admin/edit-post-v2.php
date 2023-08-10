@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     while ($row = mysqli_fetch_assoc($result)) {
 
   ?>
-      <form action="" method="post" enctype="multipart/form-data">
+      <form action="save-update-post.php" method="post" enctype="multipart/form-data">
 
         <section style=" ">
           <div class="container py-4 ">
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
                     <div class="form-group">
                       <label>Category</label>
                       <select class="custom-select my-1 mr-sm-2" name="Category">
-                        <?php
+                        <?php 
                         $category1 = "SELECT * FROM `categorytable`";
                         $result1 = mysqli_query($conn, $category1);
                         if (mysqli_num_rows($result1) > 0) {
