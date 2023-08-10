@@ -8,7 +8,7 @@
                     <?php
                             include "config.php";
                             if(isset($_GET['aid'])){
-                            $auth_id $_GET['aid'];
+                            $auth_id = $_GET['aid'];
                             $sql1 = "SELECT * FROM post JOIN user ON post.author = user.user_id
                             WHERE post.author = {$auth_id}";
                             $result1 = mysqli_query($conn, $sql1) or die("Query Failed.");
