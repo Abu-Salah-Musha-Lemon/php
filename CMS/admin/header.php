@@ -1,6 +1,5 @@
 <?php
 include_once "config.php";
-session_start();
 if (!isset($_SESSION['userName'])) {
     header("location:login.php");
 }
@@ -37,16 +36,18 @@ if (!isset($_SESSION['userName'])) {
 
         <div id="templatemo_menu">
 
-            <ul>
-
-                <li><a href="../admin/post.php">Post</a></li>
+            <ul> 
                 <?php
                 if ($_SESSION['role'] == 0) {
                 ?>
                     <li><a href="../admin/user.php" >User</a></li>
                     <li><a href="../admin/category.php">category</a></li>
 
-                <?php }
+                <?php }else{
+                     ?>
+                     <li><a href="../admin/post.php">Post</a></li>
+                 <?php
+                }
                 ?>
 
             </ul>
