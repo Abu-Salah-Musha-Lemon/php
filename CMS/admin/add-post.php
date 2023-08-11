@@ -9,7 +9,7 @@ include_once "config.php";
   <form action="save-post.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <label for="exampleInputEmail1">Post Title</label>
-      <input type="text" class="form-control" name="post-title" placeholder="post title">
+      <input type="text" class="form-control" name="post-title" placeholder="Post title">
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Description</label>

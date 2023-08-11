@@ -1,13 +1,13 @@
 <?php
 include_once "header.php";
 include_once "config.php";
-$post_id = $_GET["edit_post"];
+echo $post_id = $_GET["edit_post"];
 
 ?>
 <div class="container md-5 mt-4 mb-6">
 
   <?php
-  $sql = "SELECT post_table.`Post_ID`, post_table.`Post_Title`, post_table.`Post_Description`, post_table.`Post_Date`, post_table.`Post_Image`,  post_table.`Category`, post_table.`Author`, categorytable.CategoryName, `usertable`.`userName` FROM post_table LEFT JOIN categorytable ON post_table.`category`= categorytable.Category_ID LEFT JOIN usertable ON `post_table`.`Author` = usertable.userId  WHERE post_table.post_ID = {$post_id}";
+  $sql = "SELECT post_table.`Post_ID`, post_table.`Post_Title`, post_table.`Post_Description`, post_table.`Post_Date`, categorytable.CategoryName, `usertable`.`userName` FROM post_table LEFT JOIN categorytable ON post_table.`category`= categorytable.Category_ID LEFT JOIN usertable ON `post_table`.`Author` = usertable.userId  WHERE post_table.post_ID = {$post_id}";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -55,8 +55,7 @@ $post_id = $_GET["edit_post"];
                     <div class="form-group">
                       <img class="my-2" style="width:150px;height:100px;" src="upload/<?php echo $row['Post_Image']; ?>" alt="" srcset="">
                       <input type="file" class="form-control-file" name="new_image">
-                      <input type="hidden" class="form-control-file" name="old_image" value="<?php echo $row['Post_Image']; ?>">
-                      <input type="text" class="form-control-file" name="edit_post" value="<?php echo $post_id; ?> ">
+                      <input type="hidden" class="form-control-file" name="old_image" value="<?php echo $post_id; ?>">
 
                     </div>
                     <br>

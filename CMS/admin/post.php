@@ -60,7 +60,7 @@ if (isset($_GET['delete'])) {
                     <td>' . $row["Post_Title"] . '</td>
                     <td>' . $row["Post_Description"] . '</td>
 
-                    <td > <img class = "cImage" src="upload/' . $row['Post_Image'] . '"></td>
+                    <td > <img class = "cImage" src="./upload/'.$row['Post_Image'].'"></td>
                     <td>' . $row["CategoryName"] . '</td>
 
                     <td>' . $row["userName"] . '</td>

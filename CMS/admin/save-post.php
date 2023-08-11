@@ -13,7 +13,7 @@ if (isset($_GET['delete'])) {
     $file_size = $_FILES['image']['size'];
     $file_tmp = $_FILES['image']['tmp_name'];
     $file_type = $_FILES['image']['type'];
-    $file_export = explode('.', $file_name);
+    $file_export = explode('.',$file_name);
     $file_end = end($file_export);
     $file_ext = strtolower($file_end);
     $extensions = array('jpeg', 'jpg', 'png');
@@ -25,12 +25,26 @@ if (isset($_GET['delete'])) {
       $error[] = "file size must be 2mb only allowed ";
     }
     if (empty($error) == true) {
-      move_uploaded_file($file_tmp, './upload/' . $file_name);
+      move_uploaded_file($file_tmp,'./upload/'.$file_name);
     } else {
       print_r($error);
       die();
     }
   }
+  $adpostTy = mysqli_real_escape_string($conn, $_POST["post-title"]);
+  $adpostDes = mysqli_real_escape_string($conn, $_POST["Desc"]);
+  $adpostCat = mysqli_real_escape_string($conn, $_POST["Category"]);//category comming from add post.php --> select >name =Category
+ $adpostDat = date("Y-m-d H:i:s"); 
+ $aut_id = $_SESSION['userID'];
+
+  $sql2 = "INSERT INTO `post_table`( `Post_Title`, `Post_Description`, `Post_Date`, `Post_Image`, `Category`,`Author`) VALUES ('$adpostTy','$adpostDes','$adpostDat','$file_name',$adpostCat,'$aut_id');";
+  $sql2.= "UPDATE `categorytable` SET `Post`=Post+1 WHERE `Category_ID`='$adpostCat'";
+ if (mysqli_multi_query($conn,$sql2)) {
+    
+     header('location:post.php');
+ }else{
+    echo "query faild";
+ }
 
 
   ?>
